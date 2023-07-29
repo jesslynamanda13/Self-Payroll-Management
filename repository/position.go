@@ -66,7 +66,7 @@ func (p *positionRepository) Fetch(ctx context.Context, limit, offset int) ([]*m
 	// [DONE] TODO: Buat fungsi untuk mendapatkan data position berdasarkan parameter
 	var data []*model.Position
 
-	if err := p.Cfg.Database().WithContext(ctx).Preload("Position").
+	if err := p.Cfg.Database().WithContext(ctx).Select("id", "name", "salary", "created_at", "updated_at").
 		Limit(limit).Offset(offset).Find(&data).Error; err != nil {
 		return nil, err
 	}
