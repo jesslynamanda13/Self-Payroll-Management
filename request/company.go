@@ -13,8 +13,6 @@ type (
 		Balance int `json:"balance" validate:"required"`
 	}
 )
-
-// [DONE] TODO: tuliskan validasi untuk CompanyRequest dengan rule semua field required
 func (req CompanyRequest) Validate() error {
 	return validation.ValidateStruct(&req,
 		validation.Field(&req.Name, validation.Required),

@@ -43,7 +43,6 @@ func (c *companyRepository) CreateOrUpdate(ctx context.Context, company *model.C
 		return nil, err
 	}
 
-	// [DONE] TODO: tuliskan baris code untuk update data company
 	if err := c.Cfg.Database().WithContext(ctx).
 		Model(&model.Company{ID: id}).Updates(company).Find(company).Error; err != nil {
 		return nil, err
@@ -58,7 +57,6 @@ func (c *companyRepository) DebitBalance(ctx context.Context, amount int, note s
 		return errors.New("company data not found")
 	}
 
-	// [DONE] TODO: tuliskan baris code untuk mengurangi balance
 	company.Balance -= amount
 
 	if err := c.Cfg.Database().WithContext(ctx).Model(company).Updates(company).Find(company).Error; err != nil {
@@ -83,7 +81,6 @@ func (c *companyRepository) AddBalance(ctx context.Context, balance int, amount 
 		return nil, errors.New("company data not found")
 	}
 
-	// [DONE] TODO: tuliskan baris code untuk topup balance
 	company.Balance += amount
 
 	if err := c.Cfg.Database().WithContext(ctx).Model(company).Updates(company).Find(company).Error; err != nil {

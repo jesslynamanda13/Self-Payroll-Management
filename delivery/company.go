@@ -22,11 +22,7 @@ func NewCompanyDelivery(companyUsecase model.CompanyUsecase) CompanyDelivery {
 }
 
 func (comp *companyDelivery) Mount(group *echo.Group) {
-
-	// [DONE] TODO:
-	// 1. Buatlah handler yang mengarah ke fungsi comp.GetDetailCompanyHandler
 	group.GET("/:id", comp.GetDetailCompanyHandler)
-	// 2. Buatlah handler yang mengarah ke fungsi comp.UpdateOrCreateCompanyHandler
 	group.PATCH("/:id", comp.UpdateOrCreateCompanyHandler)
 	group.POST("/topup", comp.TopupBalanceHandler)
 
@@ -68,8 +64,6 @@ func (comp *companyDelivery) UpdateOrCreateCompanyHandler(e echo.Context) error 
 
 func (comp *companyDelivery) TopupBalanceHandler(e echo.Context) error {
 	ctx := e.Request().Context()
-
-	// [DONE] TODO: lakukan validasi request disini
 	var req request.TopupCompanyBalance
 
 	if err := e.Bind(&req); err != nil {
