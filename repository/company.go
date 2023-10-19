@@ -45,7 +45,7 @@ func (c *companyRepository) CreateOrUpdate(ctx context.Context, company *model.C
 
 	if err := c.Cfg.Database().WithContext(ctx).
 		Model(&model.Company{ID: id}).Updates(company).Find(company).Error; err != nil {
-	// [DONE] TODO: tuliskan baris code untuk update data company
+	
 	if err := c.Cfg.Database().WithContext(ctx).Debug().
 		Model(&companyModel).
 		Where("id = ?", company.ID).
