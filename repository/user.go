@@ -21,6 +21,7 @@ func (p *userRepository) FindByID(ctx context.Context, id int) (*model.User, err
 	if err := p.Cfg.Database().
 		WithContext(ctx).
 		Where("id = ?", id).
+		Preload("Position").
 		First(user).Error; err != nil {
 		return nil, err
 	}

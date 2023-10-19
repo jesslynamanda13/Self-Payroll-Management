@@ -24,6 +24,8 @@ func NewCompanyDelivery(companyUsecase model.CompanyUsecase) CompanyDelivery {
 func (comp *companyDelivery) Mount(group *echo.Group) {
 	group.GET("/:id", comp.GetDetailCompanyHandler)
 	group.PATCH("/:id", comp.UpdateOrCreateCompanyHandler)
+	// 2. Buatlah handler yang mengarah ke fungsi comp.UpdateOrCreateCompanyHandler
+	group.POST("/:id", comp.UpdateOrCreateCompanyHandler)
 	group.POST("/topup", comp.TopupBalanceHandler)
 
 }
